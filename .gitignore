@@ -1,0 +1,8 @@
+# Ignore the IDE specific config files
+.vscode
+.idea
+.settings
+
+# Java specific files
+.classpath
+.project
