@@ -3,21 +3,16 @@ package coordinates;
 public class Spherical extends Cartesian {
 	
 	/**
-	 * The value of rho represents the magnitude of the x,y,z components
+	 * Instance variables rho,theta,phi where rho is the magnitude, theta is the azimuthal angle, 
+	 * and phi is the polar angle
 	 */
 	private double rho;
-	/**
-	 * The value of theta represents the azimuthal angle having a range between
-	 * 0 and 2*pi (360 degrees)
-	 */
 	private double theta;
-	/**
-	 * The value of phi represents the polar angle having a range bewteen 0 
-	 * and pi (180 degrees)
-	 */
 	private double phi;
 	
-	// Default constructor
+	/**
+	 * Default constructor initializing the values of rho,theta,phi to zero for this instance
+	 */
 	Spherical() {
 		this.rho = 0;
 		this.theta = 0;
@@ -25,7 +20,8 @@ public class Spherical extends Cartesian {
 	}
 	
 	/**
-	 * Class constructor with user-defined rho, theta, phi parameters
+	 * Constructor taking user-defined values of rho,theta,phi for initialization of instance
+	 * variables
 	 */
 	Spherical(double rho, double theta, double phi) {
 		this.rho = rho;
@@ -33,66 +29,121 @@ public class Spherical extends Cartesian {
 		this.phi = phi;
 	}
 	
-	// Getters and setters
+	/**
+	 * Mutator method for value of rho
+	 * @param rho
+	 */
 	public void setRho(double rho) {
 		this.rho = rho;
 	}
+
+	/**
+	 * Mutator method for value of theta
+	 * @param theta
+	 */
 	public void setTheta(double theta) {
 		this.theta = theta;
 	}
+
+	/**
+	 * Mutator method for value of phi
+	 * @param phi
+	 */
 	public void setPhi(double phi) {
 		this.phi = phi;
 	}
+
+	/**
+	 * Accessor method for value of rho
+	 * @return
+	 */
 	public double getRho() {
 		return this.rho;
 	}
+
+	/**
+	 * Accessor method for value of theta
+	 * @return
+	 */
 	public double getTheta() {
 		return this.theta;
 	}
+
+	/**
+	 * Accessor method for value of phi
+	 * @return
+	 */
 	public double getPhi() {
 		return this.phi;
 	}
+
+	/**
+	 * The cart2sph method uses existing x,y,z Cartesian values to calculate and set the
+	 * Spherical rho,theta,phi components
+	 */
+	public void cart2sph() {
+		this.rho = calcMag(getX(),getY(),getZ());
+		this.theta = Math.atan2(getY(), getX());
+		this.phi = Math.acos(getZ()/this.rho);
+	}
 	
 	/**
-	 * The cart2sph method takes user-defined values of x,y,z and converts
-	 * those values to spherical rho, theta, phi values and sets them.
+	 * This cart2sph method is an overloaded variant which takes user-defined values of the 
+	 * Cartesian x,y,z components, then calculates and sets the Spherical components of
+	 * rho,theta,phi for this instance
 	 * @param x
 	 * @param y
 	 * @param z
 	 */
 	public void cart2sph(double x, double y, double z) {
-		setX(x);
-		setY(y);
-		setZ(z);
-		this.rho = calcMag();
+		this.rho = calcMag(x,y,z);
 		this.theta = Math.atan2(y, x);
 		this.phi = Math.acos(z/rho);
 	}
 	
 	/**
-	 * The sph2cart method uses existing values or rho,theta,phi and converts
-	 * them into cartesian x,y,z components and sets their values.
+	 * The sph2cart method uses existing values or rho,theta,phi and calculates and sets the
+	 * Cartesian values of x,y,z for this instance
 	 */
 	public void sph2cart() {
 		setX(rho * Math.sin(theta) * Math.cos(phi));
 		setY(rho * Math.sin(theta) * Math.sin(phi));
 		setZ(rho * Math.cos(phi));
 	}
+
+	/**
+	 * This calcTheta method uses existing Cartesian x,y component values to calculate, set, and
+	 * return the value of theta for this instance.
+	 * @return
+	 */
+	public double calcTheta() {
+		setTheta(Math.atan2(getY(), getX()));
+		return theta;
+	}
 	
 	/**
-	 * The calcTheta method takes user-defined x,y values and calculates the
-	 * azimuthal angle off the x-axis in the x-y plane having a range between
-	 * 0 and 2*pi (360 degrees), then sets and returns the value of theta
+	 * This calcTheta method is an overloaded variant which takes user-defined input values of
+	 * Cartesian x,y components to calculate and set the value of theta for this instance
 	 */
 	public double calcTheta(double x, double y) {
 		setTheta(Math.atan2(y, x));
 		return theta;
 	}
+
+	/**
+	 * This calcPhi method uses existing Cartesian x,y,z component values to calculate, and
+	 * return the value of phi for this instance
+	 * @return
+	 */
+	public double calcPhi() {
+		setPhi(Math.acos(getZ()/calcMag()));
+		return phi;
+	}
 	
 	/**
-	 * The calcPhi method takes user defined x,y,z values and calculates the
-	 * polar anlge off the z-axis having a range between 0 and pi (180 degrees)
-	 * , then sets and returns the value of phi
+	 * The calcPhi method is an overloaded variant which takes user-defined input values of
+	 * Cartesian x,y,z comopnents, sets the x,y,z Cartesian component values, the calculates, 
+	 * sets, and returns the value of phi for this instance
 	 */
 	public double calcPhi(double x, double y, double z) {
 		setX(x);
@@ -104,4 +155,3 @@ public class Spherical extends Cartesian {
 	}
 	
 }
-

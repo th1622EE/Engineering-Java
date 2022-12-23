@@ -2,11 +2,15 @@ package coordinates;
 
 public class Cylindrical extends Cartesian {
 	
-	// Instance variables
+	/**
+	 * Instance variables representing the r,theta class components
+	 */
 	private double r;
 	private double theta;
 	
-	// Default constructor
+	/**
+	 * Default constructor initializing r,theta,z components to zero
+	 */
 	Cylindrical() {
 		this.r = 0;
 		this.theta = 0;
@@ -14,7 +18,7 @@ public class Cylindrical extends Cartesian {
 	}
 	
 	/**
-	 * Class constructor which takes user-defined r,theta,z parameters
+	 * Constructor with user-defined r,theta,z parameters for initialization
 	 */
 	Cylindrical(double r, double theta, double z) {
 		this.r = r;
@@ -22,24 +26,43 @@ public class Cylindrical extends Cartesian {
 		setZ(z);
 	}
 	
-	// Getters and setters
+	/**
+	 * Mutator method for r-component
+	 * @param r
+	 */
 	public void setR(double r) {
 		this.r = r;
 	}
+
+	/**
+	 * Mutator method for theta-component
+	 * @param theta
+	 */
 	public void setTheta(double theta) {
 		this.theta = theta;
 	}
+
+	/**
+	 * Accessor method for r-component
+	 * @return
+	 */
 	public double getR() {
 		return this.r;
 	}
+	
+	/**
+	 * Accessor method for theta-component
+	 * @return
+	 */
 	public double getTheta() {
 		return this.theta;
 	}
 	
 	/**
-	 * The calcTheta method takes user-defined x,y values to calculate
-	 * azimuthal angle off the x-axis in the x-y plane, then sets and returns
-	 * the value of theta for this object
+	 * The calcTheta method takes user-defined values of x,y components, then sets and returns the value of theta for the instance
+	 * @param x
+	 * @param y
+	 * @return
 	 */
 	public double calcTheta(double x, double y) {
 		setTheta(Math.atan2(y, x));

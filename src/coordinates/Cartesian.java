@@ -2,12 +2,16 @@ package coordinates;
 
 public class Cartesian {
 	
-	// Instance variables
+	/**
+	 * Instance variables representing the x,y,z components.
+	 */
 	private double x;
 	private double y;
 	private double z;
 	
-	// Default constructor
+	/**
+	 * The default constructor initializes x,y,z components to zero.
+	 */
 	Cartesian() {
 		this.x = 0;
 		this.y = 0;
@@ -15,7 +19,7 @@ public class Cartesian {
 	}
 	
 	/**
-	 * 2D constructor with user-defined x,y parameters and z defaults to zero
+	 * 2D constructor with user-defined x,y parameters with z-component set to zero
 	 */
 	Cartesian(double x, double y) {
 		this.x = x;
@@ -32,28 +36,45 @@ public class Cartesian {
 		this.z = z;
 	}
 	
-	// Getters and setters
+	/**
+	 * Mutator method for Cartesian x-component
+	 */
 	public void setX(double x) {
 		this.x = x;
 	}
+	/**
+	 * Mutator method for Cartesian y-component
+	 */
 	public void setY(double y) {
 		this.y = y;
 	}
+	/**
+	 * Mutator method for Cartesian z-component
+	 */
 	public void setZ(double z) {
 		this.z = z;
 	}
+	/**
+	 * Accessor method for Cartesian x-component
+	 */
 	public double getX() {
 		return this.x;
 	}
+	/**
+	 * Accessor method for Cartesian y-component
+	 */
 	public double getY() {
 		return this.y;
 	}
+	/**
+	 * Accessor method for Cartesian z-component
+	 */
 	public double getZ() {
 		return this.z;
 	}
 	
 	/**
-	 * This calcMag method takes no parameters and uses existing values of the
+	 * The calcMag method takes no parameters and uses existing values of the
 	 * x,y,z cartesian componenets to calculate and return the magnitude. 
 	 */
 	public double calcMag() {
@@ -62,8 +83,9 @@ public class Cartesian {
 	}
 	
 	/**
-	 * This is an overloaded method for calcMag which takes user-defined x,y
-	 * values to calculate, set and return the magnitude.
+	 * This calcMag is an overloaded variant which takes user-defined values of x,y components, 
+	 * sets the x,y Cartesian component values, and then calculates and returns the magnitude
+	 * of this 2D instance
 	 */
 	public double calcMag(double x, double y) {
 		setX(x);
@@ -73,8 +95,9 @@ public class Cartesian {
 	}
 	
 	/**
-	 * This is an overloaded method for calcMag which takes user-defined x,y,z
-	 * values to calculate, set and return the magnitude.
+	 * This is an overloaded method for calcMag which takes user-defined values of Cartesian
+	 * x,y,z components, sets the x,y,z Cartesian component values, and then calculates and
+	 * returns the magnitude of this 3D instance
 	 */
 	public double calcMag(double x, double y, double z) {
 		setX(x);
@@ -83,6 +106,5 @@ public class Cartesian {
 		double mag = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
 		return mag;
 	}
-	
 	
 }
