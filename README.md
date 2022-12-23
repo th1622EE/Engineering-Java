@@ -1,7 +1,7 @@
 # Engineering with Java
 
 <p align="center">
-  <img src="https://github.com/th1622EE/Data-Sets/blob/main/logos/java-logo-vector-1.svg"/>
+  <img src="https://github.com/th1622EE/Data-Sets/blob/main/logos/java-logo-vector-1.svg" width="500" height="500" />
 </p>
 
 ## Introduction
